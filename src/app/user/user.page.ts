@@ -1,7 +1,8 @@
 import {HttpClient} from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {User} from '../models';
+import {Camera, CameraResultType} from '@capacitor/camera';
 
 @Component({
   selector: 'app-user',
@@ -11,10 +12,12 @@ import {User} from '../models';
 export class UserPage implements OnInit {
 
   public user: User;
+  public img: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient) { }
+    private http: HttpClient) {
+  }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
@@ -24,5 +27,14 @@ export class UserPage implements OnInit {
         this.user = user;
       });
   }
+
+  async takePicture() {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: true,
+      resultType: CameraResultType.Base64
+    });
+    this.img = `data:image/jpeg;base64,${image.base64String}`;
+  };
 
 }
