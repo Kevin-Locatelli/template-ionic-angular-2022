@@ -7,16 +7,13 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  public messages: Message[] = this.data.getMessages().slice(0, 4);
+
   constructor(private data: DataService) {}
 
   refresh(ev) {
-    setTimeout(() => {
-      ev.detail.complete();
-    }, 3000);
+    this.messages = this.messages.concat(this.data.getMessages().slice(4, 10));
+    ev.detail.complete();
   }
-
-  getMessages(): Message[] {
-    return this.data.getMessages();
-  }
-
 }

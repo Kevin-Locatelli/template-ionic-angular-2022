@@ -11,7 +11,8 @@ export class MessageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   isIos() {
     const win = window as any;

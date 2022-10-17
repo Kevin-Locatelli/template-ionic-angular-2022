@@ -78,6 +78,6 @@ export class DataService {
   }
 
   public getMessageById(id: number): Message {
-    return this.messages[id];
+    return this.messages.find(value => value.id === id);
   }
 }
