@@ -15,9 +15,9 @@ export class MessageComponent implements OnInit {
 
   ngOnInit() {
 
-    setInterval(() => {
+    setTimeout(() => {
       this.event.emit('coucou');
-    }, 5000);
+    }, 1000);
   }
 
   isIos() {
