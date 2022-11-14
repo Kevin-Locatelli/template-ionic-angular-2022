@@ -16,7 +16,7 @@ export class ViewMessagePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.paramMap.get('id') ?? '0';
     this.message = this.data.getMessageById(parseInt(id, 10));
     this.message.read = true;
   }

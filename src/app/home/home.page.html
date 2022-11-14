@@ -14,10 +14,17 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">
-        Inbox
+        Inbox 2
       </ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-label>Default input {{inputValue}}</ion-label>
+    <ion-input [(ngModel)]="inputValue"></ion-input>
+  </ion-item>
+
+<app-message [message]="messages[0]" (event)="onChildEvent($event)"></app-message>
 
   <ion-list>
     <ion-item *ngFor="let user of users" [disabled]="user.id === 4" [routerLink]="'/user/' + user.id">

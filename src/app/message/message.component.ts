@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../services/data.service';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Message} from '../services/data.service';
 
 @Component({
   selector: 'app-message',
@@ -8,10 +8,16 @@ import { Message } from '../services/data.service';
 })
 export class MessageComponent implements OnInit {
   @Input() message: Message;
+  @Output() event = new EventEmitter<string>();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+
+    setInterval(() => {
+      this.event.emit('coucou');
+    }, 5000);
   }
 
   isIos() {
