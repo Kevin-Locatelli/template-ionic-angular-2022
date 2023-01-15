@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AdminPage } from './admin/admin.page';
+import { OrderPage } from './order/order.page';
 
 const routes: Routes = [
   {
@@ -7,18 +9,26 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'message/:id',
-    loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'user',
-    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
+  {
+    path: 'admin',
+    component: AdminPage
+  },
+  {
+    path: 'order',
+    loadChildren: () => import('./order/order.module').then( m => m.OrderPageModule)
+  },
+  {
+    path: 'order',
+    component: OrderPage
+  }
 ];
 
 @NgModule({

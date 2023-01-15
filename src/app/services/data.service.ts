@@ -81,3 +81,10 @@ export class DataService {
     return this.messages.find(value => value.id === id);
   }
 }
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export class adminPage {
+  async present() {
+    return Promise.resolve(undefined);
+  }
+}

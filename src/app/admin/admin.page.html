@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>id</ion-label>
+      <ion-input type="text" [(ngModel)]="id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>nom</ion-label>
+      <ion-input type="text" [(ngModel)]="nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>ingredients</ion-label>
+      <ion-input type="text" [(ngModel)]="ingredients"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>description</ion-label>
+      <ion-input type="text" [(ngModel)]="description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>photo</ion-label>
+      <ion-input type="text" [(ngModel)]="photo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>prix</ion-label>
+      <ion-input type="text" [(ngModel)]="prix"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="addpizza(id, nom, ingredients, description, photo, prix)">add pizza</ion-button>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>nom</ion-label>
+      <ion-select placeholder="Choisir une pizza" [(ngModel)]="nom" (ionChange)="setpizza(nom)">
+        <ion-select-option *ngFor="let pizza of pizzas" [value]="pizza.nom">{{pizza.nom}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-list *ngIf="pizzaz != null">
+      <ion-item>
+        <ion-label>id</ion-label>
+        <ion-input type="text" [(ngModel)]="id" [value]="pizzaz.id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>ingredients</ion-label>
+        <ion-input type="text" [(ngModel)]="ingredients" [value]="pizzaz.ingredients"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>description</ion-label>
+        <ion-input type="text" [(ngModel)]="description" [value]="pizzaz.description"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>photo</ion-label>
+        <ion-input type="text" [(ngModel)]="photo" [value]="pizzaz.photo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>prix</ion-label>
+        <ion-input type="text" [(ngModel)]="prix" [value]="pizzaz.prix"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  <ion-button (click)="modpizza(id, nom, ingredients, description, photo, prix)">modify pizza</ion-button>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>nom</ion-label>
+      <ion-select placeholder="Choisir une pizza" [(ngModel)]="nom">
+        <ion-select-option *ngFor="let pizza of pizzas" [value]="pizza.nom" (click)="setpizza(pizza)">{{pizza.nom}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="delpizza(nom)">delete pizza</ion-button>
+</ion-content>
